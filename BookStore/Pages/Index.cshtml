@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Home page";
 }
@@ -9,9 +10,40 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@foreach (var book in Model.Books)
-{
-    <div class="col-sm-8">
-        @Html.DisplayName(book.Name)
-    </div>
-}
+<h3>Newly added books</h3> These books are stored in the Database. It is a simple InMemory Database. The code will work for a normal database. you only have to chage the DB.
+<br />You can add a book to this list by Clicking on  <a class="btn btn-success text-dark" asp-area="" asp-page="Create">Add new Book</a>
+
+                                                <form method="post">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Name</th>
+                                                                <th>Description</th>
+                                                                <th>Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var book in Model.Books)
+                                                            {
+                                                            <tr>
+                                                                <td>@book.Id  </td>
+                                                                <td>@book.Name</td>
+                                                                <td>@book.Description</td>
+                                                                <td>@book.Price</td>
+                                                                <td>
+                                                                    <a asp-page="./Edit" asp-route-id="@book.Id">Edit</a> |
+                                                                    <button type="submit" asp-page-handler="delete"
+                                                                            asp-route-id="@book.Id">
+                                                                        delete
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                    
+                                                </form>
+
+
+

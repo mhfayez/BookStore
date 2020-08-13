@@ -14,11 +14,11 @@ namespace BookStore.Data
         {
             new Book
             {
-                Id = 1, Name = "C sharp", Description = "A book on C sharp", Price = 200, ImageName = "c-sharp.PNG"
+                Id = new Guid(), Name = "C sharp", Description = "A book on C sharp", Price = 200, ImageName = "c-sharp.PNG"
             },
-            new Book {Id = 2, Name = "PHP", Description = "PHP Rocks", Price = 200, ImageName = "php.PNG"},
-            new Book {Id = 3, Name = "Ruby on Rails", Description = "It is not so old yet", Price = 200, ImageName = "ruby-on-rails.PNG"},
-            new Book {Id = 4, Name = "JavaScript", Description = "You should use a framework", Price = 200, ImageName = "javascript.PNG"}
+            new Book {Id = new Guid(), Name = "PHP", Description = "PHP Rocks", Price = 200, ImageName = "php.PNG"},
+            new Book {Id = new Guid(), Name = "Ruby on Rails", Description = "It is not so old yet", Price = 200, ImageName = "ruby-on-rails.PNG"},
+            new Book {Id = new Guid(), Name = "JavaScript", Description = "You should use a framework", Price = 200, ImageName = "javascript.PNG"}
         };
     }
 }
