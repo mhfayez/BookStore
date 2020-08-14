@@ -46,11 +46,11 @@ namespace BookStore.Pages
 
         public async Task<IActionResult> OnPostDeleteAsync(Guid id)
         {
-            var contact = await _context.Books.FindAsync(id);
+            var book = await _context.Books.FindAsync(id);
 
-            if (contact != null)
+            if (book != null)
             {
-                _context.Books.Remove(contact);
+                _context.Books.Remove(book);
                 await _context.SaveChangesAsync();
             }
 
