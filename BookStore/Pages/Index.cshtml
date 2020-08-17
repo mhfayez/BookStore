@@ -9,6 +9,11 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<a class="btn btn-success text-dark" asp-area="" asp-page="Create">Add new Book</a>
+
+<br /><br />
+
+
 @foreach (var book in Model.Books)
 {
     <div class="col-sm-8">

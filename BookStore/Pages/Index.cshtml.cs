@@ -23,7 +23,7 @@ namespace BookStore.Pages
 
         public void OnGet()
         {
-            Books = Store.Books;
+            Books = BookCatalog.Books;
         }
     }
 }

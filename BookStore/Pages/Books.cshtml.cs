@@ -17,8 +17,8 @@ namespace BookStore.Pages
 
         public void OnGet()
         {
-             Books = Store.Books;
-             FavoriteBook = Store.Books.ElementAt(new Random().Next(Store.Books.Count));
+             Books = BookCatalog.Books;
+             FavoriteBook = BookCatalog.Books.ElementAt(new Random().Next(BookCatalog.Books.Count));
 
         }
     }
