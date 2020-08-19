@@ -13,23 +13,7 @@ namespace BookStore.Pages
 {
     public class IndexModel : PageModel
     {
-        //private readonly ILogger<IndexModel> _logger;
-
-        //public IndexModel(ILogger<IndexModel> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //use it when using the List in store class
-        //public List<Book> Books { get; set; }
-
-        //public void OnGet()
-        //{
-        //    Books = Store.Books;
-        //}
-
-        /** use the following when using the  database **/
-
+        
         private readonly BookStoreDbContext _context;
 
         public IndexModel(BookStoreDbContext context)
@@ -48,11 +32,10 @@ namespace BookStore.Pages
         {
             var book = await _context.Books.FindAsync(id);
 
-            if (book != null)
-            {
-                _context.Books.Remove(book);
-                await _context.SaveChangesAsync();
-            }
+            if (book == null) return RedirectToPage();
+
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage();
         }

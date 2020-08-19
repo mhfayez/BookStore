@@ -4,39 +4,49 @@
     ViewData["Title"] = "Books";
 }
 
-<div id="featuredProduct" class="row">
-    <div class="col-sm-6">
-        <p>Randomly selected Favorite book. (On Page Refresh)</p>
-        <img alt="Featured Product" src="~/img/@Model.FavoriteBook.ImageName" class="img-fluid rounded bookImg"/>
-    </div>
-    <div id="featuredProductInfo" class="col-sm-6">
-        <div id="productInfo">
-            <h2>@Model.FavoriteBook.Name</h2>
-            <p class="price">$@string.Format("{0:f}", Model.FavoriteBook.Price)</p>
-            <p class="description">@Model.FavoriteBook.Description</p>
-        </div>
-        <div id="callToAction">
-            <a class="btn btn-danger order-button" asp-page="/order" asp-route-id="@Model.FavoriteBook.Id" title="Order @Model.FavoriteBook.Name">Order Now</a>
-        </div>
-    </div>
-</div>
-<br/><br/>
 
-<div id="productsWrapper" class="row">
-    @foreach (var book in Model.Books)
-    {
-        <div class="col-sm-3">
-            <a asp-page="/order" asp-route-id="@book.Id" title="Order @book.Name">
-                <div class="productInfo">
-                    <h3>@book.Name</h3>
-                    <img class="product-image img-fluid img-thumbnail" src="~/img/@book.ImageName" alt="Image of @book.Name" />
-                    <p class="description">@book.Description</p>
-                </div>
-            </a>
-            <div class="action">
-                <p class="price float-left">$@string.Format("{0:f}", book.Price)</p>
-                <a class="btn btn-sm btn-danger order-button float-right" asp-page="/order" asp-route-id="@book.Id" title="Order @book.Name">Order Now</a>
+@if (Model.Books.Count > 0)
+{
+
+    <div id="featuredProduct" class="row">
+        <div class="col-sm-6">
+            <p>Randomly selected Favorite book. (On Page Refresh)</p>
+            <img alt="Featured Product" src="~/img/@Model.FavoriteBook.ImageName" class="img-fluid rounded bookImg" />
+        </div>
+        <div id="featuredProductInfo" class="col-sm-6">
+            <div id="productInfo">
+                <h2>@Model.FavoriteBook.Name</h2>
+                <p class="price">$@string.Format("{0:f}", Model.FavoriteBook.Price)</p>
+                <p class="description">@Model.FavoriteBook.Description</p>
+            </div>
+            <div id="callToAction">
+                <a class="btn btn-danger order-button" asp-page="/order" asp-route-id="@Model.FavoriteBook.Id" title="Order @Model.FavoriteBook.Name">Order Now</a>
             </div>
         </div>
-    }
-</div>
+    </div>
+    <br />
+    <br />
+
+    <div id="productsWrapper" class="row">
+        @foreach (var book in Model.Books)
+        {
+            <div class="col-sm-3">
+                <a asp-page="/order" asp-route-id="@book.Id" title="Order @book.Name">
+                    <div class="productInfo">
+                        <h3>@book.Name</h3>
+                        <img class="product-image img-fluid img-thumbnail" src="~/img/@book.ImageName" alt="Image of @book.Name" />
+                        <p class="description">@book.Description</p>
+                    </div>
+                </a>
+                <div class="action">
+                    <p class="price float-left">$@string.Format("{0:f}", book.Price)</p>
+                    <a class="btn btn-sm btn-danger order-button float-right" asp-page="/order" asp-route-id="@book.Id" title="Order @book.Name">Order Now</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h1>You must add some books to the list from index page</h1>
+}

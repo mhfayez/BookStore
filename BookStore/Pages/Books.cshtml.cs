@@ -11,15 +11,26 @@ namespace BookStore.Pages
 {
     public class BooksModel : PageModel
     {
+        private readonly BookStoreDbContext _context;
+
+        public BooksModel(BookStoreDbContext context)
+        {
+            _context = context;
+        }
  
         public List<Book> Books { get; set; }
+
         public Book FavoriteBook { get; set; }
 
         public void OnGet()
         {
-             Books = Store.Books;
-             FavoriteBook = Store.Books.ElementAt(new Random().Next(Store.Books.Count));
 
+            Books = _context.Books.ToList();
+            if (Books.Count > 0)
+            {
+                FavoriteBook = Books.ElementAt(0);
+            }
+                
         }
     }
 }
