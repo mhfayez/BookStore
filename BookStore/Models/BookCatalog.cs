@@ -21,7 +21,20 @@ namespace BookStore.Models
 
         public static void AddBook(Book book)
         {
+            //To give the new book an Id
+            //We could use GUID in the Catalog to avoid this
+            book.Id = Books.Last().Id + 1;
             Books.Add(book);
+        }
+
+        /**
+         * Removes the book from the Books list
+         */
+        public static void RemoveBook(int id)
+        {
+            
+            Books.Remove(Books.Find(b => b.Id == id));
+
         }
     }
 }

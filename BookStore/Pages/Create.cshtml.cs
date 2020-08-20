@@ -24,9 +24,7 @@ namespace BookStore.Pages
             {
                 return Page();
             }
-            //To give the new book an Id
-            //We could use GUID in the Catalog to avoid this
-            NewBook.Id = BookCatalog.Books.Count + 1;
+            
             BookCatalog.AddBook(NewBook);
 
             return RedirectToPage("./Index");
