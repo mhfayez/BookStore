@@ -3,16 +3,28 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 }
+<div class="text-center col-12">
+    <h3>Add a new Book</h3>
+</div>
 
-<p>Add a new Book</p>
-
-<form method="post">
-    Name
-    <input asp-for="NewBook.Name" /><br />
-    Description
-    <input asp-for="NewBook.Description" /><br />
-    Price
-    <input asp-for="NewBook.Price" />
-    <br />
-    <input type="submit" />
-</form>
+<div class="col-4">
+    <form method="post">
+        <div class="form-group">
+            <label for="bookName">Book Name</label>
+            <input class="form-control" id="bookName" asp-for="NewBook.Name">
+        </div>
+        <div class="form-group">
+            <label for="bookDescription">Description</label>
+            <input class="form-control" id="bookDescription" asp-for="NewBook.Description">
+        </div>
+        <div class="form-group">
+            <label for="bookPrice">Price</label>
+            <input class="form-control" id="bookPrice" asp-for="NewBook.Price">
+        </div>
+        <div class="form-group">
+            <label for="bookImage">Image Name</label>
+            <input class="form-control" id="bookImage" asp-for="NewBook.ImageName">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

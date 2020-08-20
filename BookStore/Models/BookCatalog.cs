@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using BookStore.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace BookStore.Data
+namespace BookStore.Models
 {
     public static class BookCatalog
     {
-
+        //We could set the type of Id in the Book class as GUID which will automatically assign Globally Unique IDs to our book object
+        //instead of Id = 1 we could say Id = new GUID().
         public static List<Book> Books {get;set;} = new List<Book>
         {
             new Book {Id = 1, Name = "C sharp", Description = "A book on C sharp", Price = 200, ImageName = "c-sharp.PNG"},
